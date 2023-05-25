@@ -3,7 +3,8 @@ const nextConfig = {
   experimental: {
     appDir: true
   },
-  output: 'export'
+  output: 'export',
+  basePath: '/lipito'
 }
 
 module.exports = nextConfig
