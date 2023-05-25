@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Sign Up - Open PRO',
+  title: 'Lipito - Signup',
   description: 'Page description',
 }
 

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Home - Open PRO',
+  title: 'Lipito - Welcome to home page',
   description: 'Page description',
 }
 
@@ -13,10 +13,10 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Features />
+      {/* <Features />
       <Zigzag />
       <Testimonials />
-      <Newsletter />
+      <Newsletter /> */}
     </>
   )
 }
