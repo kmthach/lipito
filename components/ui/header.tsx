@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import MobileMenu from './mobile-menu'
+import { useSession,signIn, signOut } from 'next-auth/react'
 
 export default function Header() {
+  const {data:session} = useSession() 
+  console.log(session)
   return (
     <header className="absolute w-full z-30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -19,21 +22,32 @@ export default function Header() {
           {/* Desktop navigation */}
           <nav className="hidden md:flex md:grow">
             {/* Desktop sign in links */}
+            {session?.user ? 
+            (
+              <ul className="flex grow justify-end flex-wrap items-center">
+              <li>
+                <button onClick={()=>signOut()} className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3">
+                  Sign out
+                </button>
+              </li>
+              </ul>
+            ):  (
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
-                <Link
-                  href="/signin"
+                <button
+                  onClick={()=>signIn()}
                   className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Sign in
-                </Link>
+                </button>
               </li>
               <li>
                 <Link href="/signup" className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3">
                   Sign up
                 </Link>
               </li>
-            </ul>
+            </ul>)}
+
           </nav>
 
           <MobileMenu />

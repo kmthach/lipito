@@ -1,11 +1,24 @@
+'use client'
 export const metadata = {
   title: 'Lipito - Signin',
   description: 'Page description',
 }
 
+import { signIn } from 'next-auth/react'
 import Link from 'next/link'
+import { createRef, useRef } from 'react'
 
 export default function SignIn() {
+  const username = useRef("")
+  const password = useRef("")
+  const onSubmit = async () =>{
+    const result = await signIn("credentials",{
+      username:username.current,
+      password:password.current,
+      redirect: true,
+      callbackUrl: '/'
+    })
+  }
   return (
     <section className="relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -40,13 +53,13 @@ export default function SignIn() {
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
                   <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email</label>
-                  <input id="email" type="email" className="form-input w-full text-gray-300" placeholder="you@yourcompany.com" required />
+                  <input id="email" type="username" className="form-input w-full text-gray-300" placeholder="you@yourcompany.com" onChange={(e)=> {username.current = e.target.value}} required />
                 </div>
               </div>
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
                   <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="password">Password</label>
-                  <input id="password" type="password" className="form-input w-full text-gray-300" placeholder="Password (at least 10 characters)" required />
+                  <input id="password" type="password" className="form-input w-full text-gray-300" placeholder="Password (at least 10 characters)" onChange={(e)=> {password.current = e.target.value}} required />
                 </div>
               </div>
               <div className="flex flex-wrap -mx-3 mb-4">
@@ -62,7 +75,7 @@ export default function SignIn() {
               </div>
               <div className="flex flex-wrap -mx-3 mt-6">
                 <div className="w-full px-3">
-                  <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Sign in</button>
+                  <button type='button' onClick={onSubmit} className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Sign in</button>
                 </div>
               </div>
             </form>
