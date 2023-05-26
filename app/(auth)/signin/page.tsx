@@ -1,8 +1,9 @@
-'use client'
 export const metadata = {
   title: 'Lipito - Signin',
   description: 'Page description',
 }
+'use client'
+
 
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
