@@ -1,7 +1,4 @@
-export const metadata = {
-  title: 'Lipito - Signin',
-  description: 'Page description',
-}
+
 'use client'
 
 

@@ -1,7 +1,4 @@
-export const metadata = {
-  title: 'Lipito - Signup',
-  description: 'Page description',
-}
+
 
 import Link from 'next/link'
 
