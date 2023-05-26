@@ -30,8 +30,8 @@ async function getAnswer(context: {role:string, content: string}[]): Promise<any
   console.log(context)
   const res = await fetch('https://api.openai.com/v1/chat/completions',{
     headers:{
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer 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'
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Authorization': 'Bearer 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'
     },
     method:'POST',
     body: JSON.stringify({
