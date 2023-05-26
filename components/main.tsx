@@ -27,11 +27,10 @@ async function speakAnswer(answer: string): Promise<string> {
 async function getAnswer(context: {role:string, content: string}[]): Promise<any> {
    // Call GPT Here
   await SpeechRecognition.stopListening()
-  console.log(context)
   const res = await fetch('https://api.openai.com/v1/chat/completions',{
     headers:{
         'Content-Type': 'application/json;charset=UTF-8',
-        'Authorization': 'Bearer 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'
+        'Authorization': process.env.NEXT_PUBLIC_GPT_API_TOKEN || ''
     },
     method:'POST',
     body: JSON.stringify({
