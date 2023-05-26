@@ -28,10 +28,10 @@ async function getAnswer(context: {role:string, content: string}[]): Promise<any
    // Call GPT Here
   await SpeechRecognition.stopListening()
   console.log(context)
-  const res = await fetch('https://api.pawan.krd/v1/chat/completions',{
+  const res = await fetch('https://api.openai.com/v1/chat/completions',{
     headers:{
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer pk-EoSibStInPHZaFWPvrpdkdLrJnsySpzJHWiYWKrlIoucCdaj'
+        'Authorization': 'Bearer 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'
     },
     method:'POST',
     body: JSON.stringify({
